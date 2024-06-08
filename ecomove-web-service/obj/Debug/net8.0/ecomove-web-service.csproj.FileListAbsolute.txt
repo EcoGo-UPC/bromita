@@ -71,3 +71,4 @@ C:\Users\Chizo\Documents\Aplicaciones Web\ecomove-web-service\ecomove-web-servic
 C:\Users\Chizo\Documents\Aplicaciones Web\ecomove-web-service\ecomove-web-service\obj\Debug\net8.0\ecomove-web-service.pdb
 C:\Users\Chizo\Documents\Aplicaciones Web\ecomove-web-service\ecomove-web-service\obj\Debug\net8.0\ecomove-web-service.genruntimeconfig.cache
 C:\Users\Chizo\Documents\Aplicaciones Web\ecomove-web-service\ecomove-web-service\obj\Debug\net8.0\ref\ecomove-web-service.dll
+C:\Users\Chizo\Documents\Aplicaciones Web\ecomove-web-service\ecomove-web-service\obj\Debug\net8.0\ecomove-web-service.sourcelink.json

@@ -5,7 +5,6 @@ using ecomove_web_service.BookingReservation.Domain.Services;
 using ecomove_web_service.BookingReservation.Infrastructure.Persistence.EFC.Repositories;
 using ecomove_web_service.CustomerSupport.Application.Internal.CommandServices;
 using ecomove_web_service.CustomerSupport.Application.Internal.QueryServices;
-using ecomove_web_service.CustomerSupport.Domain.Model.Aggregates;
 using ecomove_web_service.CustomerSupport.Domain.Repositories;
 using ecomove_web_service.CustomerSupport.Domain.Services;
 using ecomove_web_service.CustomerSupport.Infrastructure.Persistence.EFC.Repositories;
@@ -134,6 +133,10 @@ builder.Services.AddScoped<IMembershipCategoryQueryService, MembershipCategoryQu
 builder.Services.AddScoped<IEcoVehicleRepository, EcoVehicleRepository>();
 builder.Services.AddScoped<IEcoVehicleCommandService, EcoVehicleCommandService>();
 builder.Services.AddScoped<IEcoVehicleQueryService, EcoVehicleQueryService>();
+
+builder.Services.AddScoped<IEcoVehicleTypeRepository, EcoVehicleTypeRepository>();
+builder.Services.AddScoped<IEcoVehicleTypeCommandService, EcoVehicleTypeCommandService>();
+builder.Services.AddScoped<IEcoVehicleTypeQueryService, EcoVehicleTypeQueryService>();
 
 // BookingReservation Bounded Context Injection Configuration
 

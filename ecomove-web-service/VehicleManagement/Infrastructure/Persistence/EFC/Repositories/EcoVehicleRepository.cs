@@ -18,15 +18,15 @@ public class EcoVehicleRepository(AppDbContext context) : BaseRepository<EcoVehi
         return await Context.Set<EcoVehicle>().ToListAsync();
     }
     
-    public async Task<IEnumerable<EcoVehicle>> FindAllEcoVehiclesByTypeAndModelAsync(string type, string model)
+    public async Task<IEnumerable<EcoVehicle>> FindAllEcoVehiclesByEcoVehicleTypeIdAndModelAsync(int ecoVehicleTypeId, string model)
     {
-        if (string.IsNullOrEmpty(type) || string.IsNullOrEmpty(model))
+        if (ecoVehicleTypeId < 0 || string.IsNullOrEmpty(model))
         {
             throw new ArgumentException("Type and model must be provided.");
         }
 
         var result = await Context.Set<EcoVehicle>()
-            .Where(ecoVehicle => ecoVehicle.Type == type && ecoVehicle.Model == model)
+            .Where(ecoVehicle => ecoVehicle.EcoVehicleId == ecoVehicleTypeId && ecoVehicle.Model == model)
             .ToListAsync();
 
         return result.AsEnumerable();
@@ -46,31 +46,32 @@ public class EcoVehicleRepository(AppDbContext context) : BaseRepository<EcoVehi
         return result.AsEnumerable();
     }
     
-    public async Task<IEnumerable<EcoVehicle>> FindAllEcoVehiclesByTypeAndStatusAsync(string type, string status)
+    public async Task<IEnumerable<EcoVehicle>> FindAllEcoVehiclesByEcoVehicleTypeIdAndStatusAsync(int ecoVehicleTypeId, string status)
     {
-        if (string.IsNullOrEmpty(type) || string.IsNullOrEmpty(status))
+        if (ecoVehicleTypeId < 0 || string.IsNullOrEmpty(status))
         {
             throw new ArgumentException("Type and status must be provided.");
         }
 
         var result = await Context.Set<EcoVehicle>()
-            .Where(ecoVehicle => ecoVehicle.Type == type && ecoVehicle.Status == status)
+            .Where(ecoVehicle => ecoVehicle.EcoVehicleId == ecoVehicleTypeId && ecoVehicle.Status == status)
             .ToListAsync();
 
         return result.AsEnumerable();
     }
     
-    public async Task<IEnumerable<EcoVehicle>> FindAllEcoVehiclesByTypeAsync(string type)
+    public async Task<IEnumerable<EcoVehicle>> FindAllEcoVehiclesByEcoVehicleTypeIdAsync(int ecoVehicleTypeId)
     {
-        if (string.IsNullOrEmpty(type))
+        if (ecoVehicleTypeId < 0)
         {
             throw new ArgumentException("Type must be provided.");
         }
 
         var result = await Context.Set<EcoVehicle>()
-            .Where(ecoVehicle => ecoVehicle.Type == type)
+            .Where(ecoVehicle => ecoVehicle.EcoVehicleId == ecoVehicleTypeId)
             .ToListAsync();
 
         return result.AsEnumerable();
     }
+    
 }

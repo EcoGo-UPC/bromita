@@ -1,5 +1,6 @@
 using ecomove_web_service.BookingReservation.Domain.Model.Aggregates;
 using ecomove_web_service.VehicleManagement.Domain.Model.Commands;
+using ecomove_web_service.VehicleManagement.Domain.Model.Entities;
 using ecomove_web_service.VehicleManagement.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
@@ -10,17 +11,17 @@ public partial class EcoVehicle
     public EcoVehicle()
     {
         Model = string.Empty;
-        Type = string.Empty;
+        EcoVehicleTypeId = 0;
         BatteryLevel = 0;
         Location = new Location(0, 0);
         Status = string.Empty;
         ImageUrl = string.Empty;
     }
     
-    public EcoVehicle(string model, string type, int batteryLevel, double latitude, double longitude, string status, string imageUrl)
+    public EcoVehicle(string model, int ecoVehicleTypeId, int batteryLevel, double latitude, double longitude, string status, string imageUrl)
     {
         Model = model;
-        Type = type;
+        EcoVehicleTypeId = ecoVehicleTypeId;
         BatteryLevel = batteryLevel;
         Location = new Location(latitude, longitude);
         Status = status;
@@ -30,7 +31,7 @@ public partial class EcoVehicle
     public EcoVehicle(CreateEcoVehicleCommand command)
     {
         Model = command.Model;
-        Type = command.Type;
+        EcoVehicleTypeId = command.EcoVehicleTypeId;
         BatteryLevel = command.BatteryLevel;
         Location = new Location(command.Latitude, command.Longitude);
         Status = command.Status;
@@ -39,7 +40,8 @@ public partial class EcoVehicle
     
     public int EcoVehicleId { get; private set; }
     public string Model { get; private set; }
-    public string Type { get; private set; }
+    public EcoVehicleType EcoVehicleType { get; internal set; }
+    public int EcoVehicleTypeId { get; private set; }
     public int BatteryLevel { get; private set; }
     public Location Location { get; private set; }
     public string Status { get; private set; }

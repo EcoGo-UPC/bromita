@@ -7,7 +7,7 @@ public static class EcoVehicleResourceFromEntityAssembler
 {
     public static EcoVehicleResource ToResourceFromEntity(EcoVehicle entity)
     {
-        return new EcoVehicleResource(entity.EcoVehicleId, entity.Model, entity.Type, entity.BatteryLevel,
+        return new EcoVehicleResource(entity.EcoVehicleId, entity.Model, entity.EcoVehicleTypeId, entity.BatteryLevel,
             entity.Location, entity.Status, entity.ImageUrl);
     }
 }

@@ -7,7 +7,7 @@ public static class CreateEcoVehicleCommandFromResourceAssembler
 {
     public static CreateEcoVehicleCommand ToCommandFromResource(CreateEcoVehicleResource resource)
     {
-        return new CreateEcoVehicleCommand(resource.Model, resource.Type, resource.BatteryLevel, resource.Latitude,
+        return new CreateEcoVehicleCommand(resource.Model, resource.EcoVehicleTypeId, resource.BatteryLevel, resource.Latitude,
             resource.Longitude, resource.Status, resource.ImageUrl);
     }
 }

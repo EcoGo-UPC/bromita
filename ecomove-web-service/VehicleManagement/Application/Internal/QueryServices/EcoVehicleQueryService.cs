@@ -17,9 +17,9 @@ public class EcoVehicleQueryService(IEcoVehicleRepository ecoVehicleRepository) 
         return await ecoVehicleRepository.FindAllEcoVehiclesAsync();
     }
     
-    public async Task<IEnumerable<EcoVehicle>> Handle(GetAllEcoVehiclesByTypeAndModelQuery query)
+    public async Task<IEnumerable<EcoVehicle>> Handle(GetAllEcoVehiclesByEcoVehicleTypeIdAndModelQuery query)
     {
-        return await ecoVehicleRepository.FindAllEcoVehiclesByTypeAndModelAsync(query.Type, query.Model);
+        return await ecoVehicleRepository.FindAllEcoVehiclesByEcoVehicleTypeIdAndModelAsync(query.EcoVehicleTypeId, query.Model);
     }
     
     public async Task<IEnumerable<EcoVehicle>> Handle(GetAllEcoVehiclesByBatteryLevelGreaterThanQuery query)
@@ -27,13 +27,13 @@ public class EcoVehicleQueryService(IEcoVehicleRepository ecoVehicleRepository) 
         return await ecoVehicleRepository.FindAllEcoVehiclesByBatteryLevelGreaterThanAsync(query.BatteryLevel);
     }
     
-    public async Task<IEnumerable<EcoVehicle>> Handle(GetAllEcoVehiclesByTypeAndStatusQuery query)
+    public async Task<IEnumerable<EcoVehicle>> Handle(GetAllEcoVehiclesByEcoVehicleTypeIdAndStatusQuery query)
     {
-        return await ecoVehicleRepository.FindAllEcoVehiclesByTypeAndStatusAsync(query.Type, query.Status);
+        return await ecoVehicleRepository.FindAllEcoVehiclesByEcoVehicleTypeIdAndStatusAsync(query.EcoVehicleTypeId, query.Status);
     }
     
-    public async Task<IEnumerable<EcoVehicle>> Handle(GetAllEcoVehiclesByTypeQuery query)
+    public async Task<IEnumerable<EcoVehicle>> Handle(GetAllEcoVehiclesByEcoVehicleTypeIdQuery idQuery)
     {
-        return await ecoVehicleRepository.FindAllEcoVehiclesByTypeAsync(query.Type);
+        return await ecoVehicleRepository.FindAllEcoVehiclesByEcoVehicleTypeIdAsync(idQuery.EcoVehicleTypeId);
     }
 }

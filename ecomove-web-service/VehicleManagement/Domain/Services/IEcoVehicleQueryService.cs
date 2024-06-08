@@ -7,8 +7,8 @@ public interface IEcoVehicleQueryService
 {
     Task<EcoVehicle?> Handle(GetEcoVehicleByEcoVehicleIdQuery query);
     Task<IEnumerable<EcoVehicle>> Handle(GetAllEcoVehiclesQuery query);
-    Task<IEnumerable<EcoVehicle>> Handle(GetAllEcoVehiclesByTypeAndModelQuery query);
+    Task<IEnumerable<EcoVehicle>> Handle(GetAllEcoVehiclesByEcoVehicleTypeIdAndModelQuery query);
     Task<IEnumerable<EcoVehicle>> Handle(GetAllEcoVehiclesByBatteryLevelGreaterThanQuery query);
-    Task<IEnumerable<EcoVehicle>> Handle(GetAllEcoVehiclesByTypeAndStatusQuery query);
-    Task<IEnumerable<EcoVehicle>> Handle(GetAllEcoVehiclesByTypeQuery query);
+    Task<IEnumerable<EcoVehicle>> Handle(GetAllEcoVehiclesByEcoVehicleTypeIdAndStatusQuery query);
+    Task<IEnumerable<EcoVehicle>> Handle(GetAllEcoVehiclesByEcoVehicleTypeIdQuery idQuery);
 }

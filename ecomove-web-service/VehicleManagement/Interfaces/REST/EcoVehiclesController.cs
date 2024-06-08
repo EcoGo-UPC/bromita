@@ -14,6 +14,14 @@ namespace ecomove_web_service.VehicleManagement.Interfaces.REST;
 public class EcoVehiclesController(IEcoVehicleCommandService ecoVehicleCommandService, IEcoVehicleQueryService ecoVehicleQueryService)
     : ControllerBase
 {
+    /**
+     * <summary>
+     *      Creates an eco vehicle
+     * </summary>
+     * <remarks>
+     *      Creates an eco vehicle with a given model, type, battery level, latitude, longitude, status and image URL
+     * </remarks>
+     */
     [HttpPost]
     [SwaggerOperation(
         Summary = "Creates an eco vehicle",
@@ -64,9 +72,9 @@ public class EcoVehiclesController(IEcoVehicleCommandService ecoVehicleCommandSe
         Description = "Gets all eco vehicles for a given type",
         OperationId = "GetAllEcoVehiclesByType")]
     [SwaggerResponse(200, "The eco vehicles were found", typeof(EcoVehicleResource))]
-    public async Task<IActionResult> GetAllEcoVehiclesByType(string type)
+    public async Task<IActionResult> GetAllEcoVehiclesByType(int ecoVehicleTypeId)
     {
-        var getEcoVehiclesByTypeQuery = new GetAllEcoVehiclesByTypeQuery(type);
+        var getEcoVehiclesByTypeQuery = new GetAllEcoVehiclesByEcoVehicleTypeIdQuery(ecoVehicleTypeId);
         var ecoVehicles = await ecoVehicleQueryService.Handle(getEcoVehiclesByTypeQuery);
         var ecoVehicleResources = ecoVehicles.Select(EcoVehicleResourceFromEntityAssembler.ToResourceFromEntity);
         return Ok(ecoVehicleResources);
@@ -78,9 +86,9 @@ public class EcoVehiclesController(IEcoVehicleCommandService ecoVehicleCommandSe
         Description = "Gets all eco vehicles for a given type and model",
         OperationId = "GetAllEcoVehiclesByTypeAndModel")]
     [SwaggerResponse(200, "The eco vehicles were found", typeof(EcoVehicleResource))]
-    public async Task<IActionResult> GetAllEcoVehiclesByTypeAndModel(string type, string model)
+    public async Task<IActionResult> GetAllEcoVehiclesByTypeAndModel(int ecoVehicleTypeId, string model)
     {
-        var getEcoVehiclesByTypeAndModelQuery = new GetAllEcoVehiclesByTypeAndModelQuery(type, model);
+        var getEcoVehiclesByTypeAndModelQuery = new GetAllEcoVehiclesByEcoVehicleTypeIdAndModelQuery(ecoVehicleTypeId, model);
         var ecoVehicles = await ecoVehicleQueryService.Handle(getEcoVehiclesByTypeAndModelQuery);
         var ecoVehicleResources = ecoVehicles.Select(EcoVehicleResourceFromEntityAssembler.ToResourceFromEntity);
         return Ok(ecoVehicleResources);
@@ -106,9 +114,9 @@ public class EcoVehiclesController(IEcoVehicleCommandService ecoVehicleCommandSe
         Description = "Gets all eco vehicles for a given type and status",
         OperationId = "GetAllEcoVehiclesByTypeAndStatus")]
     [SwaggerResponse(200, "The eco vehicles were found", typeof(EcoVehicleResource))]
-    public async Task<IActionResult> GetAllEcoVehiclesByTypeAndStatus(string type, string status)
+    public async Task<IActionResult> GetAllEcoVehiclesByTypeAndStatus(int ecoVehicleTypeId, string status)
     {
-        var getEcoVehiclesByTypeAndStatusQuery = new GetAllEcoVehiclesByTypeAndStatusQuery(type, status);
+        var getEcoVehiclesByTypeAndStatusQuery = new GetAllEcoVehiclesByEcoVehicleTypeIdAndStatusQuery(ecoVehicleTypeId, status);
         var ecoVehicles = await ecoVehicleQueryService.Handle(getEcoVehiclesByTypeAndStatusQuery);
         var ecoVehicleResources = ecoVehicles.Select(EcoVehicleResourceFromEntityAssembler.ToResourceFromEntity);
         return Ok(ecoVehicleResources);

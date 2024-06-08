@@ -8,8 +8,8 @@ public interface IEcoVehicleRepository : IBaseRepository<EcoVehicle>
     Task<EcoVehicle?> FindEcoVehicleByEcoVehicleIdAsync(int ecoVehicleId);
     
     Task<IEnumerable<EcoVehicle>> FindAllEcoVehiclesAsync();
-    Task<IEnumerable<EcoVehicle>> FindAllEcoVehiclesByTypeAndModelAsync(string type, string model);
-    Task<IEnumerable<EcoVehicle>> FindAllEcoVehiclesByTypeAsync(string type);
-    Task<IEnumerable<EcoVehicle>> FindAllEcoVehiclesByTypeAndStatusAsync(string type, string status);
+    Task<IEnumerable<EcoVehicle>> FindAllEcoVehiclesByEcoVehicleTypeIdAndModelAsync(int EcoVehicleTypeId, string model);
+    Task<IEnumerable<EcoVehicle>> FindAllEcoVehiclesByEcoVehicleTypeIdAsync(int EcoVehicleTypeId);
+    Task<IEnumerable<EcoVehicle>> FindAllEcoVehiclesByEcoVehicleTypeIdAndStatusAsync(int EcoVehicleTypeId, string status);
     Task<IEnumerable<EcoVehicle>> FindAllEcoVehiclesByBatteryLevelGreaterThanAsync(int batteryLevel);
 }

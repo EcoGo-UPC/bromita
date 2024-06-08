@@ -5,6 +5,7 @@ using ecomove_web_service.Shared.Infrastructure.Persistence.EFC.Configuration.Ex
 using ecomove_web_service.UserManagement.Domain.Model.Aggregates;
 using ecomove_web_service.UserManagement.Domain.Model.Entities;
 using ecomove_web_service.VehicleManagement.Domain.Model.Aggregates;
+using ecomove_web_service.VehicleManagement.Domain.Model.Entities;
 using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
 using Microsoft.EntityFrameworkCore;
 
@@ -77,7 +78,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         builder.Entity<EcoVehicle>().HasKey(v => v.EcoVehicleId);
         builder.Entity<EcoVehicle>().Property(v => v.EcoVehicleId).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<EcoVehicle>().Property(v => v.Model).IsRequired();
-        builder.Entity<EcoVehicle>().Property(v => v.Type).IsRequired();
+        builder.Entity<EcoVehicle>().Property(v => v.EcoVehicleId).IsRequired();
         builder.Entity<EcoVehicle>().Property(v => v.BatteryLevel).IsRequired();
         builder.Entity<EcoVehicle>().OwnsOne(v => v.Location, l =>
         {
@@ -92,6 +93,15 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             .WithOne(b => b.EcoVehicle)
             .HasForeignKey(b => b.VehicleId)
             .HasPrincipalKey(v => v.EcoVehicleId);
+        
+        builder.Entity<EcoVehicleType>().HasKey(et => et.EcoVehicleTypeId);
+        builder.Entity<EcoVehicleType>().Property(et => et.EcoVehicleTypeId).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<EcoVehicleType>().Property(et => et.Name).IsRequired();
+        builder.Entity<EcoVehicleType>()
+            .HasMany(et => et.EcoVehicles)
+            .WithOne(v => v.EcoVehicleType)
+            .HasForeignKey(v => v.EcoVehicleTypeId)
+            .HasPrincipalKey(et => et.EcoVehicleTypeId);
         
         // BookingReservation Context
         
