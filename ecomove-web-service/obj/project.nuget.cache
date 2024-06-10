@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "G4l1VMC+AOfSgfql8KFevdOpLgkIEW1GTwDIFLePsTUTz4naLBGWINE3CMEdWHDhWne3NKQXKxLaCYu5BMvgCg==",
+  "dgSpecHash": "U8En2HRIvW8cWcy9rjBvKAj+SJ+IZLhQ3WU7FdRi07imaTWG+/pVPrxxfxdQECqFnu/hAY92tCtd61r/q7oB2w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Chizo\\Documents\\Aplicaciones Web\\ecomove-web-service\\ecomove-web-service\\ecomove-web-service.csproj",
+  "projectFilePath": "C:\\Users\\Chizo\\Documents\\Aplicaciones Web\\bromita\\bromita\\ecomove-web-service\\ecomove-web-service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Chizo\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Chizo\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",

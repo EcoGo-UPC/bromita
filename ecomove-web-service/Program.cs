@@ -8,6 +8,11 @@ using ecomove_web_service.CustomerSupport.Application.Internal.QueryServices;
 using ecomove_web_service.CustomerSupport.Domain.Repositories;
 using ecomove_web_service.CustomerSupport.Domain.Services;
 using ecomove_web_service.CustomerSupport.Infrastructure.Persistence.EFC.Repositories;
+using ecomove_web_service.Payment.Application.Internal.CommandServices;
+using ecomove_web_service.Payment.Application.Internal.QueryServices;
+using ecomove_web_service.Payment.Domain.Repositories;
+using ecomove_web_service.Payment.Domain.Services;
+using ecomove_web_service.Payment.Infrastructure.Persistence.EFC.Repositories;
 using ecomove_web_service.Shared.Domain.Repositories;
 using ecomove_web_service.Shared.Infrastructure.Persistence.EFC.Configuration;
 using ecomove_web_service.Shared.Infrastructure.Persistence.EFC.Repositories;
@@ -157,6 +162,12 @@ builder.Services.AddScoped<ITicketQueryService, TicketQueryService>();
 builder.Services.AddScoped<ITicketCategoryRepository, TicketCategoryRepository>();
 builder.Services.AddScoped<ITicketCategoryCommandService, TicketCategoryCommandService>();
 builder.Services.AddScoped<ITicketCategoryQueryService, TicketCategoryQueryService>();
+
+// Payment Bounded Context Injection Configuration
+
+builder.Services.AddScoped<ICardRepository, CardRepository>();
+builder.Services.AddScoped<ICardCommandService, CardCommandService>();
+builder.Services.AddScoped<ICardQueryService, CardQueryService>();
 
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())
